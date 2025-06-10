@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
 @import "tailwindcss";
 
+
 @theme {
   --color-mint-500: oklch(0.72 0.11 178);
   --color-grayish-blue: hsl(237, 18%, 59%);
@@ -22,6 +23,7 @@
 .flip-card {
   @apply relative rounded-lg md:rounded-2xl shadow-lg flex flex-col text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-none w-20 sm:w-32 md:w-40 lg:w-48 lg:h-48 border-b-4 md:border-b-8 border-black;
   perspective: 1000px; /* enables 3D transforms */
+
 }
 
 .top,
@@ -29,6 +31,7 @@
 .top-flip,
 .bottom-flip {
   @apply w-full h-1/2 flex items-center justify-center overflow-hidden text-soft-red text-center;
+
 }
 
 .top,
@@ -53,20 +56,31 @@
 
 .top-flip {
   @apply top-0 origin-bottom z-20;
-  animation: flip-top 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  animation: flip-top 0.9s ease-out forwards;
 }
 
 .bottom-flip {
   @apply bottom-0 origin-top z-10;
+  animation: flip-bottom 0.9s ease-out forwards;
 }
 
-@layer utilities {
-  @keyframes flip-top {
-    0% {
-      transform: rotateX(0deg);
-    }
-    100% {
-      transform: rotateX(120deg);
-    }
+
+@keyframes flip-top {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50%,
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flip-bottom {
+  0%,
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
   }
 }
