@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import FlipCard from "./components/FlipCard";
-import "./App.css";
 import { FaInstagram, FaPinterest } from "react-icons/fa";
 import { IoLogoFacebook } from "react-icons/io";
 
