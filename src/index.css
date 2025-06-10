@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-grayish-blue: hsl(237, 18%, 59%);
+  --color-soft-red: hsl(345, 95%, 68%);
+
+  /* neutral */
+  --color-white: hsl(0, 0%, 100%);
+  --color-very-dark-blue: hsl(235, 16%, 14%);
+  --color-dark-desaturated-blue: hsl(236, 21%, 26%);
+  --color-dark-blue: hsl(234, 17%, 12%);
+
+  --font-red-hat-text: "Red Hat Text", sans-serif;
+}
+
+.time-card {
+  @apply flex flex-col items-center w-full;
+}
+
+.flip-card {
+  @apply relative rounded-lg md:rounded-2xl shadow-lg flex flex-col text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-none w-20 sm:w-32 md:w-40 lg:w-48 lg:h-48 border-b-4 md:border-b-8 border-black;
+  perspective: 1000px; /* enables 3D transforms */
+}
+
+.top,
+.bottom,
+.top-flip,
+.bottom-flip {
+  @apply w-full h-1/2 flex items-center justify-center overflow-hidden text-soft-red text-center;
+}
+
+.top,
+.top-flip {
+  @apply bg-dark-desaturated-blue rounded-md md:rounded-xl;
+}
+
+.bottom,
+.bottom-flip {
+  @apply bg-dark-desaturated-blue rounded-md md:rounded-xl;
+}
+
+.top,
+.bottom {
+  @apply w-full h-1/2 flex items-center justify-center overflow-hidden text-soft-red backface-hidden transform-3d;
+}
+
+.top-flip,
+.bottom-flip {
+  @apply absolute w-full h-1/2 left-0 flex items-center justify-center text-soft-red bg-dark-desaturated-blue overflow-hidden backface-hidden transform-3d pointer-events-none;
+}
+
+.top-flip {
+  @apply top-0 origin-bottom z-20;
+  animation: flip-top 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+.bottom-flip {
+  @apply bottom-0 origin-top z-10;
+}
+
+@layer utilities {
+  @keyframes flip-top {
+    0% {
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateX(120deg);
+    }
+  }
+}
